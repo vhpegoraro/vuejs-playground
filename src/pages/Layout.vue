@@ -16,7 +16,11 @@
 
             <hr/>
 
-            <router-view></router-view>
+            <transition
+                name="custom-classes-transition"
+                enter-active-class="animated fadeIn">
+                <router-view></router-view>
+            </transition>                
 
         </div><!-- /.container -->
 
