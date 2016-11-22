@@ -1,3 +1,11 @@
+<style scoped>
+
+    .breadcrumb {
+        background-color: white;
+    }
+
+</style>
+
 <template>
 
     <div>
@@ -6,14 +14,12 @@
                 <h3>{{ title }}</h3>                    
             </div>
             <div class="pull-right">
-                <ol v-if="pages" class="breadcrumb">
-                    <li v-for="page in pages">
+                <ol v-if="navigator" class="breadcrumb">
+                    <li v-for="page in navigator" :class="page.navigate ? '' : 'active'">
                         <router-link v-if="page.navigate" :to="page.navigate">
-                            {{ page.title }}                                
-                        </router-link>                        
-                        <template v-else>
-                            {{ page.title }}
-                        </template>                        
+                            {{page.title}}
+                        </router-link>
+                        <template v-else>{{page.title}}</template>                        
                     </li>
                 </ol>
             </div>
@@ -27,7 +33,7 @@
 <script>
 
     export default {
-        props: ['title','pages']
+        props: ['title','navigator']
     }
 
 </script>

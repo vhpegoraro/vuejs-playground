@@ -1,6 +1,6 @@
 <template>
 
-    <app-page title="Criar produto" :pages="pages">                
+    <app-page title="Criar produto" :navigator="navigator">                
         <h5>Página de criação de produtos ...</h5>
     </app-page>
 
@@ -11,7 +11,7 @@
     export default {
         data() {
             return {
-                pages: [
+                navigator: [
                     { title: 'Produtos', navigate: '/products' },
                     { title: 'Novo produto' },
                 ]

@@ -1,6 +1,6 @@
 <template>
 
-    <app-page title="Criar usuário" :pages="pages">                
+    <app-page title="Criar usuário" :navigator="navigator">                
         <h5>Página de criação de usuários ...</h5>
     </app-page>
 
@@ -11,7 +11,7 @@
     export default {
         data() {
             return {
-                pages: [
+                navigator: [
                     { title: 'Usuários', navigate: '/users' },
                     { title: 'Novo usuário' },
                 ]
