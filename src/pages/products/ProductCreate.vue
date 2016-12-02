@@ -33,7 +33,9 @@
 
                      <div class="form-group has-feedback" v-bind:class="{ 'has-error': $v.price.$error }">
                         <label class="control-label">Preço</label>
-                        <input class="form-control" v-model="price" @input="$v.price.$touch()" placeholder="0,00">
+                        <input class="form-control money" @input="$v.price.$touch()"
+                            data-precision="2" data-allow-negative="true" 
+                            :value="priceBind" @keyup="priceBind = $event.target.value">
                         <template v-if="$v.price.$error">
                             <span class="form-control-feedback">
                                 <i class="fa fa-warning"></i>
@@ -43,6 +45,8 @@
                     </div>                                                             
 
                     <hr/>
+
+                    <p>{{ price }}</p>                    
 
                     <button type="submit" class="btn btn-success">
                         <i class="fa fa-check"></i> Salvar 
@@ -60,6 +64,7 @@
 <script>
 
     import { required, minLength } from 'vuelidate/lib/validators';
+    import Money from './../../utils/money';
 
     export default {
         data() {
@@ -70,20 +75,39 @@
                 ],
                 code: "",
                 description: "",
-                price: null
+                price: 1500.93,
+                priceStr: ""
             }
+        },
+        mounted() {
+
+            Money.maskInputs();
         },
         methods: {
             save() {
 
                 console.log(this.price);                
+            },
+            toFloat(str) {
+                
+                this.price = Money.toFloat(str);
             }
         },
         validations: {
             code: { required },
             description: { required, minLength: minLength(5) },
             price: { required }
-        }
+        },
+        computed: {
+            priceBind: {
+                get() {
+                    return Money.toString(this.price);
+                },
+                set(newValue) {
+                    this.price = Money.toFloat(newValue);
+                }
+            }            
+        }        
     }
 
 </script>
