@@ -2,9 +2,7 @@
 
   <div id="app">
     
-    <transition
-        name="custom-classes-transition"
-        enter-active-class="animated fadeIn">
+    <transition appear enter-active-class="animated fadeIn" mode="out-in">
         <router-view></router-view>
     </transition>    
 

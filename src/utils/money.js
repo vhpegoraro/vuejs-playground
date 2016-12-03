@@ -1,15 +1,11 @@
 export default class Money {
 
-    static maskInputs() {
-
-        //data-thousands="." data-decimal="," 
+    static maskInputs() { 
 
         $(".money").maskMoney({
             thousands: ".",
             decimal: ","
         });
-
-        console.log(" Foi !!!");
     }
 
     static toFloat(str) {

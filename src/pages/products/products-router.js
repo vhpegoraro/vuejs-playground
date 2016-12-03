@@ -1,5 +1,14 @@
-import ProductsIndex from './ProductsIndex.vue';
-import ProductCreate from './ProductCreate.vue';
+const ProductsIndex = resolve => {
+  require.ensure(['./ProductsIndex.vue'], () => {
+    resolve(require('./ProductsIndex.vue'))
+  }, 'products');
+}
+
+const ProductCreate = resolve => {
+  require.ensure(['./ProductCreate.vue'], () => {
+    resolve(require('./ProductCreate.vue'))
+  }, 'products');
+}
 
 export default class ProductsRouter {
 

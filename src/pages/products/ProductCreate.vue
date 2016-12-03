@@ -75,7 +75,7 @@
                 ],
                 code: "",
                 description: "",
-                price: 1500.93,
+                price: 0,
                 priceStr: ""
             }
         },
@@ -107,6 +107,12 @@
                     this.price = Money.toFloat(newValue);
                 }
             }            
+        },
+        beforeRouteLeave (to, from, next) {
+
+            var leave = confirm('Deseja realmente sair dessa página ?');
+
+            next(leave);
         }        
     }
 
