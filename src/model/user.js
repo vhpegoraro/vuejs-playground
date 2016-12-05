@@ -1,11 +1,16 @@
-export default class User {
+import { required } from 'vuelidate/lib/validators';
+
+export class User {
 
     constructor() {
-        this.name = "";
+        this.name = "";        
         this.login = "";
-        this.email = "";
         this.password = "";
-        this.isAdmin = false;
     }
+}
 
+export const userValidations = {
+    name: { required },
+    login: { required },
+    password: { required }
 }

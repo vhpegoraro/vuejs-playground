@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 
 import Vuelidate from 'vuelidate';
 
@@ -9,6 +10,9 @@ import Page from './../pages/Page.vue';
 import { routes } from './routes';
 
 import DirectivesLoader from './../directives/directives-loader';
+
+Vue.use(VueResource);
+Vue.http.options.root = 'https://vuejs-playground.firebaseio.com/';
 
 Vue.use(Vuelidate);
 

@@ -13,7 +13,7 @@ export default class Money {
         if (!str)
             return 0;
         
-        str = str.replace(/\./g, "").replace(",", ".") ;
+        str = str.replace(/\./g, "").replace(",", ".");
         
         var value = parseFloat(str);
         
